@@ -2,15 +2,15 @@
 
 [ext_resource path="res://assets/images/basictiles.png" type="Texture" id=1]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 24, 14 )
+points = PoolVector2Array( -24, 0, 24, 0, 12, 14, -12, 14 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 
 custom_solver_bias = 0.0
-points = PoolVector2Array( -10, 0, 10, 0, 10, 24, -10, 24 )
+points = PoolVector2Array( -10, -10, 10, -10, 10, 24, -10, 24 )
 
 [node name="Node2D" type="Node2D" index="0"]
 
