@@ -1,29 +1,30 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Entities/Girl.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/characters.png" type="Texture" id=2]
 
-[node name="Node2D" type="KinematicBody2D" index="0"]
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 17, 24 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Pickable", "Transform", "collision" ]
 
-[node name="Girl" type="Sprite" parent="." index="0"]
+[node name="Sprite" type="Sprite" parent="." index="0"]
 
 texture = ExtResource( 2 )
-vframes = 4
-hframes = 3
 region_enabled = true
 region_rect = Rect2( 288, 0, 48, 48 )
-_sections_unfolded = [ "Animation", "Region", "Transform" ]
+_sections_unfolded = [ "Region" ]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
-build_mode = 0
-polygon = PoolVector2Array( -18, 0, 18, 0, 0, 25, -8, 25 )
+shape = SubResource( 1 )
 
 
