@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Tilesets/OverworldTileset.tres" type="TileSet" id=1]
-[ext_resource path="res://Tilesets/Girl.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Girl.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Door.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D" index="0"]
 
@@ -52,5 +53,9 @@ _sections_unfolded = [ "Cell" ]
 [node name="Girl" parent="." index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 494, 322 )
+
+[node name="Sprite" parent="." index="3" instance=ExtResource( 3 )]
+
+position = Vector2( 456, 230 )
 
 
