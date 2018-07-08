@@ -13,7 +13,7 @@ _sections_unfolded = [ "Region" ]
 
 [node name="Grass2" type="Sprite" parent="." index="1"]
 
-position = Vector2( 96, 0 )
+position = Vector2( 60, 0 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 384, 48, 48 )
@@ -21,7 +21,7 @@ _sections_unfolded = [ "Region" ]
 
 [node name="Grass3" type="Sprite" parent="." index="2"]
 
-position = Vector2( 192, 0 )
+position = Vector2( 120, 0 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 48, 384, 48, 48 )
@@ -29,7 +29,7 @@ _sections_unfolded = [ "Region" ]
 
 [node name="Bush" type="Sprite" parent="." index="3"]
 
-position = Vector2( 288, 0 )
+position = Vector2( 180, 0 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 192, 96, 48, 48 )
@@ -37,6 +37,8 @@ _sections_unfolded = [ "Region" ]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Bush" index="0"]
 
+position = Vector2( -2, 0 )
+scale = Vector2( 0.9375, 1 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -47,9 +49,8 @@ bounce = 0.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bush/StaticBody2D" index="0"]
 
-position = Vector2( -31.2, -31.2 )
 scale = Vector2( 3.5, 3.5 )
 build_mode = 0
-polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+polygon = PoolVector2Array( -5.71429, -4.57143, 8, -4.57143, 8, 4.57143, -5.71429, 4.57143 )
 
 
