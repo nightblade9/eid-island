@@ -8,16 +8,17 @@ func _ready():
 	set_process(true)
 
 func _process(delta):
-	if Input.is_key_pressed(KEY_RIGHT):
-		vel = Vector2(speed, 0)
-	elif Input.is_key_pressed(KEY_LEFT):
-		vel = Vector2(-speed, 0)
-	elif Input.is_key_pressed(KEY_UP):
-		vel = Vector2(0, -speed)
-	elif Input.is_key_pressed(KEY_DOWN):
-		vel = Vector2(0, speed)
-	else:
-		vel = Vector2(0, 0)
+	var velocity = Vector2(0, 0)
 	
-	self.position.x = self.position.x + (vel.x * delta)
-	self.position.y = self.position.y + (vel.y * delta)
+	if Input.is_key_pressed(KEY_RIGHT):
+		velocity.x = velocity.x + speed		
+	elif Input.is_key_pressed(KEY_LEFT):
+		velocity.x = velocity.x - speed
+	
+	if Input.is_key_pressed(KEY_UP):
+		velocity.y = velocity.y - speed
+	elif Input.is_key_pressed(KEY_DOWN):
+		velocity.y = velocity.y + speed
+	
+	self.position.x = self.position.x + (velocity.x * delta)
+	self.position.y = self.position.y + (velocity.y * delta)
