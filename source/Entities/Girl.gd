@@ -62,7 +62,9 @@ func _move_to_keyboard():
 		velocity = velocity.normalized() * speed
 		move_and_slide(velocity)
 	else:
-		$AnimationPlayer.stop()
+		# Not moving and not click-move: stop animation
+		if self.destination == null:
+			$AnimationPlayer.stop()
 
 func _move_to_clicked_destination():
 	if self.destination != null:
