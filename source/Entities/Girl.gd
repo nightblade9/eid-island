@@ -58,8 +58,11 @@ func _move_to_keyboard():
 	
 	self._change_animation(new_facing)
 	
-	velocity = velocity.normalized() * speed
-	move_and_slide(velocity)
+	if velocity.x != 0 or velocity.y != 0:
+		velocity = velocity.normalized() * speed
+		move_and_slide(velocity)
+	else:
+		$AnimationPlayer.stop()
 
 func _move_to_clicked_destination():
 	if self.destination != null:
@@ -68,8 +71,8 @@ func _move_to_clicked_destination():
 		if (destination - position).length() > MINIMUM_MOVE_DISTANCE:
 			move_and_slide(velocity)
 		else:
-			# You have arrived! Not technically necessary
 			self.destination = null
+			$AnimationPlayer.stop()
 			
 func _change_animation(new_facing):
 	if new_facing != self.facing:
