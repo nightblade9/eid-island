@@ -3,14 +3,13 @@
 [ext_resource path="res://Maps/Start.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Girl.tscn" type="PackedScene" id=2]
 
-[node name="MainMap" type="Node2D"]
+[node name="MainMap" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Player" parent="." index="0" instance=ExtResource( 2 )]
 
-position = Vector2( 432, 240 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 
