@@ -7,7 +7,7 @@ extends KinematicBody2D
 const MINIMUM_MOVE_DISTANCE = 5
 var speed = 200
 var destination = null
-var facing = null # "Walk Left", "Walk Up", etc.
+var facing = null # "Left", "Up", etc.
 
 func _ready():
 	set_process(true)
@@ -27,16 +27,24 @@ func _input(event):
 		
 		if magnitude.x > magnitude.y: # more horizontal than vertical
 			if direction.x < 0:
-				new_facing = "Walk Left"
+				new_facing = "Left"
 			else:
-				new_facing = "Walk Right"
+				new_facing = "Right"
 		else:
 			if direction.y < 0:
-				new_facing = "Walk Up"
+				new_facing = "Up"
 			else:
-				new_facing = "Walk Down"
+				new_facing = "Down"
 		
 		self._change_animation(new_facing)
+
+func get_width():
+	return self.get_node("Sprite").region_rect.size.x
+
+func get_height():
+	var region_height = self.get_node("Sprite").region_rect.size.y
+	var num_vframes = self.get_node("Sprite").vframes
+	return region_height / num_vframes
 
 func _move_to_keyboard():	
 	var velocity = Vector2(0, 0)
@@ -44,17 +52,17 @@ func _move_to_keyboard():
 	
 	if Input.is_key_pressed(KEY_RIGHT):
 		velocity.x = 1
-		new_facing = "Walk Right"
+		new_facing = "Right"
 	elif Input.is_key_pressed(KEY_LEFT):
 		velocity.x = -1
-		new_facing = "Walk Left"
+		new_facing = "Left"
 	
 	if Input.is_key_pressed(KEY_UP):
 		velocity.y = -1
-		new_facing = "Walk Up"
+		new_facing = "Up"
 	elif Input.is_key_pressed(KEY_DOWN):
 		velocity.y = 1
-		new_facing = "Walk Down"
+		new_facing = "Down"
 	
 	self._change_animation(new_facing)
 	
@@ -79,4 +87,4 @@ func _move_to_clicked_destination():
 func _change_animation(new_facing):
 	if new_facing != self.facing:
 		self.facing = new_facing
-		$AnimationPlayer.play(self.facing)
+		$AnimationPlayer.play("Walk " + self.facing)
