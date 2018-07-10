@@ -9,6 +9,8 @@ var speed = 200
 var destination = null
 var facing = null # "Left", "Up", etc.
 
+signal player_moved(position, facing)
+
 func _ready():
 	set_process(true)
 
@@ -17,7 +19,6 @@ func _physics_process(delta):
 	self._move_to_clicked_destination()
 
 func _input(event):
-	#if event.is_action_pressed('click'):
 	if event is InputEventMouseButton:
 		self.destination = get_global_mouse_position()
 	
@@ -69,6 +70,7 @@ func _move_to_keyboard():
 	if velocity.x != 0 or velocity.y != 0:
 		velocity = velocity.normalized() * speed
 		move_and_slide(velocity)
+		get_tree().emit_signal("player_moved", self.position, new_facing)
 	else:
 		# Not moving and not click-move: stop animation
 		if self.destination == null:
@@ -80,6 +82,7 @@ func _move_to_clicked_destination():
 		# rotation = velocity.angle() # rotate towards target
 		if (destination - position).length() > MINIMUM_MOVE_DISTANCE:
 			move_and_slide(velocity)
+			get_tree().emit_signal("player_moved", self.position, self.facing)
 		else:
 			self.destination = null
 			$AnimationPlayer.stop()
