@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="Eid Island"
-run/main_scene="res://Maps/Overworld.tscn"
+run/main_scene="res://Maps/Start.tscn"
 config/icon="res://icon.png"
 
 [display]
