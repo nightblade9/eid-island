@@ -36,7 +36,7 @@ func load_from(rows):
 	
 func has(x, y):
 	var index = self._get_index(x, y)
-	return self._data[index] != null
+	return index < self._data.size() and self._data[index] != null
 	
 func get(x, y):
 	var index = self._get_index(x, y)

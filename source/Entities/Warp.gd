@@ -27,15 +27,10 @@ func _on_Area2D_body_entered(body):
 	# Facing is not quite accurate. I guess it'll do for now?
 	# TODO: look at player position. Near bottom = transition down
 	var player = get_tree().get_root().get_node("MainMap").get_node("Player")
-	if player.facing == "Up":
-		player.position.y = self.get_parent().height - player.get_height()
-	elif player.facing == "Down":
-		player.position.y = player.get_height()
-	elif player.facing == "Right":
-		pass
-	elif player.facing == "Left":
-		pass
 	
+	if player != body:
+		return
+		
 	# TODO: verify that `body` really is the player.
 	# For now, nothing else moves, so we should be ok.
 	get_tree().get_root().get_node("MainMap").show_map(self.target_map)

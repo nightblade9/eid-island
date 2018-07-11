@@ -1,7 +1,7 @@
 extends Node2D
 
 var current_map = null
-var warps = []
+var _warps = []
 
 var maps = {
 	# TODO: enum?
@@ -67,13 +67,27 @@ func _setup_warps(current_map_name):
 	var tile_size_pixels = map_size_metadata[1]
 	var map_size_pixels = map_size_metadata[2]
 
-	for warp in self.warps:
+	for warp in self._warps:
+		self.remove_child(warp)
 		warp.queue_free()
 	
-	warps = []
+	_warps = []
 	
 	if warp_data.has("right"):
-		var w = Warp.instance()
-		w.setup(warp_data["right"], map_size_pixels.x - tile_size_pixels.x, 0, 1, map_size_tiles.y - 1, tile_size_pixels.x, null)
-		self.warps.append(w)
-		self.add_child(w)
+		self._create_warp(warp_data["right"],
+			map_size_pixels.x - tile_size_pixels.x, 0,
+			1, map_size_tiles.y,
+			2 * tile_size_pixels.x, null)
+	
+	if warp_data.has("left"):
+		self._create_warp(warp_data["left"],
+			0, 0,
+			1, map_size_tiles.y,
+			map_size_pixels.x - (2 * tile_size_pixels.x), null)
+		
+
+func _create_warp(target_map, x, y, width_in_tiles, height_in_tiles, target_player_x, target_player_y):
+	var w = Warp.instance()
+	w.setup(target_map, x, y, width_in_tiles, height_in_tiles, target_player_x, target_player_y)
+	self._warps.append(w)
+	self.add_child(w)
