@@ -68,7 +68,6 @@ func _move_to_keyboard():
 	if velocity.x != 0 or velocity.y != 0:
 		velocity = velocity.normalized() * speed
 		move_and_slide(velocity)
-		SignalManager.emit_signal("player_moved", self.position, new_facing)
 	else:
 		# Not moving and not click-move: stop animation
 		if self.destination == null:
@@ -80,7 +79,6 @@ func _move_to_clicked_destination():
 		# rotation = velocity.angle() # rotate towards target
 		if (destination - position).length() > MINIMUM_MOVE_DISTANCE:
 			move_and_slide(velocity)
-			SignalManager.emit_signal("player_moved", self.position, self.facing)
 		else:
 			self.destination = null
 			$AnimationPlayer.stop()

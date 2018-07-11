@@ -1,6 +1,6 @@
 extends Node
 
-signal player_moved(to_position, facing)
+# TODO: add signals here
 
 # class member variables go here, for example:
 # var a = 2

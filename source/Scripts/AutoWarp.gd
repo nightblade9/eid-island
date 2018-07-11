@@ -14,6 +14,8 @@ func _init(warp_data, current_map):
 	var max_dimensions = Vector2(0, 0)
 	
 	# Figure out the map size from the largest tileset
+	# We can use this to tell where (x, y) coordinates we need
+	# to add warps (on the edges of the maps).
 	var children = current_map.get_children()
 	for child in children:
 		if child is TileMap:
@@ -29,11 +31,6 @@ func _init(warp_data, current_map):
 	print(max_dimensions)
 			
 	
-	SignalManager.connect("player_moved", self, "_on_player_moved")
-
-func _on_player_moved(position, facing):
-	print("Player moved to " + str(position) + " and is facing " + facing)
-
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
