@@ -6,10 +6,11 @@ export var target_map = ""
 # var a = 2
 # var b = "textvar"
 
-func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
-	pass
+func resize(x, y, tiles_wide, tiles_high):
+	self.position.x = x
+	self.position.y = y
+	self.scale.x = tiles_wide
+	self.scale.y = tiles_high
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.

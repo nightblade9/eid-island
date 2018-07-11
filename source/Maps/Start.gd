@@ -1,7 +1,7 @@
 extends Node2D
 
 var current_map = null
-var autowarp = null
+var warps = []
 
 var maps = {
 	# TODO: enum?
@@ -13,7 +13,8 @@ var maps = {
 }
 
 var TwoDimensionalArray = preload("res://Scripts/TwoDimensionalArray.gd")
-var AutoWarp = preload("res://Scripts/AutoWarp.gd")
+var TileMapSizer = preload("res://Scripts/TileMapSizer.gd")
+var Warp = preload("res://Entities/Warp.tscn")
 
 # TODO: ENUM?
 var world_map = TwoDimensionalArray.new(0, 0).load_from([
@@ -60,4 +61,21 @@ func _setup_warps(current_map_name):
 	if map_coordinates.y > 0 && self.world_map.has(map_coordinates.x, map_coordinates.y - 1):
 		warp_data["up"] = self.world_map.has(map_coordinates.x, map_coordinates.y - 1)
 	
-	self.autowarp = AutoWarp.new(warp_data, self.current_map)
+	var map_size_metadata = TileMapSizer.get_map_size_in_pixels(self.current_map)
+	
+	var map_size_tiles = map_size_metadata[0]
+	var tile_size_pixels = map_size_metadata[1]
+	var map_size_pixels = map_size_metadata[2]
+
+	for warp in self.warps:
+		warp.queue_free()
+	
+	warps = []
+	
+	if warp_data.has("right"):
+		var w = Warp.instance()
+		w.resize(map_size_pixels.x - tile_size_pixels.x, 0, 1, map_size_tiles.y - 1)
+		self.warps.append(w)
+		self.add_child(w)
+		w.z_index = -99
+		print(str(w))
