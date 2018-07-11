@@ -44,3 +44,5 @@ func _on_Area2D_body_entered(body):
 		player.position.x = target_player_x
 	if self.target_player_y != null:
 		player.position.y = target_player_y
+	
+	SignalManager.emit_signal("map_changed")

@@ -11,6 +11,7 @@ var facing = null # "Left", "Up", etc.
 
 func _ready():
 	set_process(true)
+	SignalManager.connect("map_changed", self, "_on_map_change")
 
 func _physics_process(delta):
 	self._move_to_keyboard()
@@ -87,3 +88,6 @@ func _change_animation(new_facing):
 	if new_facing != self.facing:
 		self.facing = new_facing
 		$AnimationPlayer.play("Walk " + self.facing)
+
+func _on_map_change():
+	self.destination = null

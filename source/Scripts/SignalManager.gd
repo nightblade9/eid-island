@@ -1,6 +1,7 @@
 extends Node
 
 # TODO: add signals here
+signal map_changed
 
 # class member variables go here, for example:
 # var a = 2
