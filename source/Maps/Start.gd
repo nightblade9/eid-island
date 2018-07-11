@@ -1,12 +1,20 @@
 extends Node2D
 
 var current_map
+
 var maps = {
 	"meadow1": "res://Maps/Overworld/Meadow1.tscn",
 	"meadow2": "res://Maps/Overworld/Meadow2.tscn",
 	"meadow3": "res://Maps/Overworld/Meadow3.tscn",
 	"meadow4": "res://Maps/Overworld/Meadow4.tscn"
 }
+
+var TwoDimensionalArray = preload("res://Scripts/TwoDimensionalArray.gd")
+
+var world_map = TwoDimensionalArray.new(3, 2).load_from([
+	["meadow1", "meadow2", "blank"],
+	["meadow3", "meadow4"],
+])
 
 const STARTING_MAP = "meadow1"
 
