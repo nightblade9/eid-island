@@ -2,16 +2,16 @@ extends Node
 
 var width = 0
 var height = 0
-var data = [] # Simplest is best. One-dimensional array of length w * h
+var _data = [] # Simplest is best. One-dimensional array of length w * h
 
 func _init(width, height):
-	self.data = []
+	self._data = []
 	self.width = width
 	self.height = height
 
 	# Initialize array with nulls
 	for i in range(self.width * self.height):
-		self.data.append(null)
+		self._data.append(null)
 	
 func load_from(rows):
 	self.height = rows.size()
@@ -30,16 +30,21 @@ func load_from(rows):
 		for x in range(row.size()):
 			var element = row[x]
 			var index = (y * self.width) + x
-			self.data[index] = element
+			self._data[index] = element
+	
+	return self
+	
+func has(x, y):
+	return self._data[x][y] != null
 	
 func get(x, y):
-	return self.data[x][y]
+	return self._data[x][y]
 
 func set(x, y, item):
-	self.data[x][y] = item
+	self._data[x][y] = item
 	
 func find(item):
-	var index = self.data.find(item)
+	var index = self._data.find(item)
 	if index > -1:
 		var x = index % self.width
 		var y = int(index / self.width)
