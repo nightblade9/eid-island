@@ -35,13 +35,16 @@ func load_from(rows):
 	return self
 	
 func has(x, y):
-	return self._data[x][y] != null
+	var index = self._get_index(x, y)
+	return self._data[index] != null
 	
 func get(x, y):
-	return self._data[x][y]
+	var index = self._get_index(x, y)
+	return self._data[index]
 
 func set(x, y, item):
-	self._data[x][y] = item
+	var index = self._get_index(x, y)
+	self._data[index] = item
 	
 func find(item):
 	var index = self._data.find(item)
@@ -51,4 +54,6 @@ func find(item):
 		return Vector2(x, y)
 	else:
 		return null # not found
-		
+
+func _get_index(x, y):
+	return (y * self.width) + x

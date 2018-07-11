@@ -74,8 +74,6 @@ func _setup_warps(current_map_name):
 	
 	if warp_data.has("right"):
 		var w = Warp.instance()
-		w.resize(map_size_pixels.x - tile_size_pixels.x, 0, 1, map_size_tiles.y - 1)
+		w.setup(warp_data["right"], map_size_pixels.x - tile_size_pixels.x, 0, 1, map_size_tiles.y - 1, tile_size_pixels.x, null)
 		self.warps.append(w)
 		self.add_child(w)
-		w.z_index = -99
-		print(str(w))
