@@ -59,7 +59,7 @@ func _setup_warps(current_map_name):
 	if map_coordinates.y < self.world_map.height && self.world_map.has(map_coordinates.x, map_coordinates.y + 1):
 		warp_data["down"] = self.world_map.get(map_coordinates.x, map_coordinates.y + 1)
 	if map_coordinates.y > 0 && self.world_map.has(map_coordinates.x, map_coordinates.y - 1):
-		warp_data["up"] = self.world_map.has(map_coordinates.x, map_coordinates.y - 1)
+		warp_data["up"] = self.world_map.get(map_coordinates.x, map_coordinates.y - 1)
 	
 	var map_size_metadata = TileMapSizer.get_map_size_in_pixels(self.current_map)
 	
@@ -85,6 +85,19 @@ func _setup_warps(current_map_name):
 			1, map_size_tiles.y,
 			map_size_pixels.x - (2 * tile_size_pixels.x), null)
 		
+	if warp_data.has("down"):
+		self._create_warp(warp_data["down"],
+			# 1.5x because map size != screen size
+			0, map_size_pixels.y - (1.5 * tile_size_pixels.y),
+			map_size_tiles.x, 1,
+			null, 2 * tile_size_pixels.y)
+	
+	if warp_data.has("up"):
+		self._create_warp(warp_data["up"],
+			0, 0,
+			map_size_tiles.x, 1,
+			# 2.5x because map size != screen size
+			null, map_size_pixels.y - (2.5 * tile_size_pixels.y))
 
 func _create_warp(target_map, x, y, width_in_tiles, height_in_tiles, target_player_x, target_player_y):
 	var w = Warp.instance()
