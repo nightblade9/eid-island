@@ -1,5 +1,7 @@
 extends Node2D
 
+const OFFSET_TO_MATCH_TILE_TO_SCREEN = 36
+
 var current_map = null
 var _warps = []
 
@@ -35,6 +37,8 @@ func _ready():
 	var player = get_node("Player")
 	player.position.x = game_dimensions.x / 2
 	player.position.y = game_dimensions.y / 2
+	
+	OS.set_window_fullscreen(true)
 	
 
 func show_map(map_name):
@@ -88,8 +92,7 @@ func _setup_warps(current_map_name):
 		
 	if warp_data.has("down"):
 		self._create_warp(warp_data["down"],
-			# 1.5x because map size != screen size
-			0, map_size_pixels.y - (1.5 * tile_size_pixels.y),
+			0, map_size_pixels.y - tile_size_pixels.y - OFFSET_TO_MATCH_TILE_TO_SCREEN,
 			map_size_tiles.x, 1,
 			null, 2 * tile_size_pixels.y)
 	
@@ -98,7 +101,7 @@ func _setup_warps(current_map_name):
 			0, 0,
 			map_size_tiles.x, 1,
 			# 2.5x because map size != screen size
-			null, map_size_pixels.y - (2.5 * tile_size_pixels.y))
+			null, map_size_pixels.y - (2 * tile_size_pixels.y))
 
 func _create_warp(target_map, x, y, width_in_tiles, height_in_tiles, target_player_x, target_player_y):
 	var w = Warp.instance()
