@@ -38,9 +38,6 @@ func _ready():
 	player.position.x = game_dimensions.x / 2
 	player.position.y = game_dimensions.y / 2
 	
-	OS.set_window_fullscreen(true)
-	
-
 func show_map(map_name):
 	if self.current_map != null:
 		self.current_map.queue_free()
