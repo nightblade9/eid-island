@@ -19,7 +19,7 @@ var Warp = preload("res://Entities/Warp.tscn")
 # TODO: ENUM?
 var world_map = TwoDimensionalArray.new(0, 0).load_from([
 	["meadow1", "meadow2"],
-	["meadow3", "meadow4", "blank"],
+	["meadow3", "meadow4"]
 ])
 
 const STARTING_MAP = "meadow1"
@@ -52,13 +52,13 @@ func _setup_warps(current_map_name):
 	var map_coordinates = self.world_map.find(current_map_name)
 	var warp_data = {} # TODO: add enum
 	
-	if map_coordinates.x < self.world_map.width && self.world_map.has(map_coordinates.x + 1, map_coordinates.y):
+	if map_coordinates.x + 1 < self.world_map.width && self.world_map.has(map_coordinates.x + 1, map_coordinates.y):
 		warp_data["right"] = self.world_map.get(map_coordinates.x + 1, map_coordinates.y)
-	if map_coordinates.x > 0 && self.world_map.has(map_coordinates.x - 1, map_coordinates.y):
+	if map_coordinates.x - 1 >= 0 && self.world_map.has(map_coordinates.x - 1, map_coordinates.y):
 		warp_data["left"] = self.world_map.get(map_coordinates.x - 1, map_coordinates.y)
-	if map_coordinates.y < self.world_map.height && self.world_map.has(map_coordinates.x, map_coordinates.y + 1):
+	if map_coordinates.y + 1 < self.world_map.height && self.world_map.has(map_coordinates.x, map_coordinates.y + 1):
 		warp_data["down"] = self.world_map.get(map_coordinates.x, map_coordinates.y + 1)
-	if map_coordinates.y > 0 && self.world_map.has(map_coordinates.x, map_coordinates.y - 1):
+	if map_coordinates.y - 1 >= 0 && self.world_map.has(map_coordinates.x, map_coordinates.y - 1):
 		warp_data["up"] = self.world_map.get(map_coordinates.x, map_coordinates.y - 1)
 	
 	var map_size_metadata = TileMapSizer.get_map_size_in_pixels(self.current_map)

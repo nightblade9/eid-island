@@ -1,12 +1,10 @@
 extends Area2D
 
 export var target_map = ""
-var target_player_x # null or int
-var target_player_y # null or int
+var target_player_x # nullable int
+var target_player_y # nullable int
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+const TELEPORT_THRESHOLD_SECONDS = 0.1
 
 func setup(target_map, x, y, tiles_wide, tiles_high, target_player_x, target_player_y):
 	self.target_map = target_map
@@ -17,27 +15,33 @@ func setup(target_map, x, y, tiles_wide, tiles_high, target_player_x, target_pla
 	self.target_player_x = target_player_x
 	self.target_player_y = target_player_y
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
-
-
 func _on_Area2D_body_entered(body):
-	# Facing is not quite accurate. I guess it'll do for now?
-	# TODO: look at player position. Near bottom = transition down
-	var player = get_tree().get_root().get_node("MainMap").get_node("Player")
+	var player = Globals.player
 	
-	if player != body:
+	# This method is called for other things like tilemaps
+	if body != player:
 		return
 		
-	# TODO: verify that `body` really is the player.
-	# For now, nothing else moves, so we should be ok.
+	# When you have three maps in a column, and you're on the top map and move
+	# down one map, you immediately warp again to the bottom map. Same for any
+	# scenario where we have multiple maps in succession. It's not related to
+	# the player position, setting that to -999 or the middle of the scren does
+	# not change anything.
+	#
+	# It's not affected by removing/destroying previous warps, either.
+	#
+	# It COULD be because we're scaling our Area2D ...
+	#
+	# I can't figure it out. Instead, just prevent teleporting twice in 0.1s.
+	if OS.get_unix_time() - player.last_teleport_time < TELEPORT_THRESHOLD_SECONDS:
+		return
+		
 	get_tree().get_root().get_node("MainMap").show_map(self.target_map)
 	
 	if self.target_player_x != null:
 		player.position.x = target_player_x
 	if self.target_player_y != null:
 		player.position.y = target_player_y
-	
+
 	SignalManager.emit_signal("map_changed")
+

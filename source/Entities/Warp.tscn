@@ -17,6 +17,7 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index" ]
 target_map = ""
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
@@ -39,6 +40,7 @@ _sections_unfolded = [ "Rect" ]
 [node name="Collision" type="CollisionShape2D" parent="." index="1"]
 
 shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 [connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
 

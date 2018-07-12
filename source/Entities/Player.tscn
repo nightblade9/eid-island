@@ -3,7 +3,6 @@
 [ext_resource path="res://Entities/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/test.png" type="Texture" id=2]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
@@ -85,7 +84,7 @@ tracks/0/keys = {
 "values": [ 9, 10, 11, 10, 9 ]
 }
 
-[node name="Girl" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1

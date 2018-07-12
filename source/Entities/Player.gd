@@ -8,6 +8,13 @@ const MINIMUM_MOVE_DISTANCE = 5
 var speed = 200
 var destination = null
 var facing = null # "Left", "Up", etc.
+# BUG: on_Area2D_body_entered triggers multiple times if you have a column
+# or row of 3+ consecutive maps. Not sure why. Hack: don't teleport twice 
+# in less than, say, 0.1s.
+var last_teleport_time = OS.get_unix_time()
+
+func _init():
+	Globals.player = self
 
 func _ready():
 	set_process(true)
@@ -91,3 +98,5 @@ func _change_animation(new_facing):
 
 func _on_map_change():
 	self.destination = null
+	self.last_teleport_time = OS.get_unix_time()
+	self.facing = "" # fixes bug: after warping, clicking didn't animate
