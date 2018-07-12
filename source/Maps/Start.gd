@@ -68,7 +68,8 @@ func _setup_warps(current_map_name):
 	var map_size_pixels = map_size_metadata[2]
 
 	for warp in self._warps:
-		self.remove_child(warp)
+		# Can't do this inside a signal. Crashes on Android.
+		# self.remove_child(warp)
 		warp.queue_free()
 	
 	_warps = []
