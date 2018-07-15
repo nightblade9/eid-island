@@ -44,6 +44,8 @@ func show_map(map_name):
 		
 	self.current_map = load(maps[map_name]).instance()
 	self.current_map.z_index = -1 # draw under the player
+	# TODO: set the "Ground" layer only to z-index -1
+	# If there is none, set the first tileset z-index to -1
 	self.add_child(self.current_map)
 	
 	self._setup_warps(map_name)
