@@ -12,14 +12,16 @@ points = PoolVector2Array( -24, 0, 24, 0, 12, 14, -12, 14 )
 custom_solver_bias = 0.0
 points = PoolVector2Array( -10, -10, 10, -10, 10, 24, -10, 24 )
 
-[node name="Node2D" type="Node2D" index="0"]
+[node name="Node2D" type="Node2D"]
+
+_sections_unfolded = [ "Z Index" ]
 
 [node name="Bush" type="Sprite" parent="." index="0"]
 
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 192, 96, 48, 48 )
-_sections_unfolded = [ "Region" ]
+_sections_unfolded = [ "Region", "Z Index" ]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Bush" index="0"]
 
@@ -37,11 +39,11 @@ shape = SubResource( 1 )
 
 [node name="Tree" type="Sprite" parent="." index="1"]
 
-position = Vector2( 48, 0 )
+position = Vector2( 60, 0 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 288, 192, 48, 48 )
-_sections_unfolded = [ "Region", "Transform" ]
+_sections_unfolded = [ "Region", "Transform", "Z Index" ]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Tree" index="0"]
 
