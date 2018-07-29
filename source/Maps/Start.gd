@@ -35,8 +35,10 @@ func _ready():
 	# TODO: center player
 	var game_dimensions = Vector2(ProjectSettings.get_setting("display/window/size/width"), ProjectSettings.get_setting("display/window/size/height"))
 	var player = get_node("Player")
-	player.position.x = game_dimensions.x / 2
-	player.position.y = game_dimensions.y / 2
+#	player.position.x = game_dimensions.x / 2
+#	player.position.y = game_dimensions.y / 2
+	player.position.x = 0
+	player.position.y = 0
 	
 func show_map(map_name):
 	if self.current_map != null:
