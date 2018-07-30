@@ -39,7 +39,6 @@ _sections_unfolded = [ "Z Index" ]
 
 [node name="Bush" type="Sprite" parent="." index="0"]
 
-editor/display_folded = true
 texture = SubResource( 1 )
 region_enabled = true
 region_rect = Rect2( 192, 96, 48, 48 )
