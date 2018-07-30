@@ -11,7 +11,7 @@ var maps = {
 	"Meadow2": "res://Maps/Overworld/Meadow2.tscn",
 	"Meadow3": "res://Maps/Overworld/Meadow3.tscn",
 	"Meadow4": "res://Maps/Overworld/Meadow4.tscn",
-	"Blank": "res://Maps/Overworld/Blank.tscn"
+	"Home": "res://Maps/Indoors/Home.tscn"
 }
 
 var TwoDimensionalArray = preload("res://Scripts/TwoDimensionalArray.gd")
