@@ -6,7 +6,7 @@ flags = 4
 load_path = "res://.import/basictiles.png-4a1ce730567243450e79eec7ba5a671c.stex"
 _sections_unfolded = [ "Resource" ]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
 
 [node name="Grass" type="Sprite" parent="." index="0"]
 
@@ -29,6 +29,22 @@ position = Vector2( 120, 0 )
 texture = SubResource( 1 )
 region_enabled = true
 region_rect = Rect2( 48, 384, 48, 48 )
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="Carpet (Gold)" type="Sprite" parent="." index="3"]
+
+position = Vector2( 180, 0 )
+texture = SubResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 48, 48, 48 )
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="Wood" type="Sprite" parent="." index="4"]
+
+position = Vector2( 240, 0 )
+texture = SubResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 48, 48, 48 )
 _sections_unfolded = [ "Region", "Transform" ]
 
 

@@ -33,7 +33,7 @@ points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 custom_solver_bias = 0.0
 points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
 
 _sections_unfolded = [ "Z Index" ]
 
@@ -127,7 +127,51 @@ bounce = 0.0
 
 shape = SubResource( 6 )
 
-[node name="House Brick (Pink)" type="Sprite" parent="." index="4"]
+[node name="House Bricks Outside (Blue)" type="Sprite" parent="." index="4"]
+
+position = Vector2( 0, 72 )
+texture = SubResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 48, 48 )
+_sections_unfolded = [ "Region", "Transform", "Z Index" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="House Bricks Outside (Blue)" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House Bricks Outside (Blue)/StaticBody2D" index="0"]
+
+shape = SubResource( 6 )
+
+[node name="House Bricks Side (Blue)" type="Sprite" parent="." index="5"]
+
+position = Vector2( 60, 72 )
+texture = SubResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 0, 48, 48 )
+_sections_unfolded = [ "Region", "Transform", "Z Index" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="House Bricks Side (Blue)" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House Bricks Side (Blue)/StaticBody2D" index="0"]
+
+shape = SubResource( 6 )
+
+[node name="House Brick (Pink)" type="Sprite" parent="." index="6"]
 
 editor/display_folded = true
 position = Vector2( 120, 0 )
