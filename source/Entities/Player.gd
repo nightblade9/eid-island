@@ -78,6 +78,7 @@ func _move_to_keyboard():
 	if velocity.x != 0 or velocity.y != 0:
 		velocity = velocity.normalized() * speed
 		move_and_slide(velocity)
+		self.destination = null # if clicked, cancel that destination
 	else:
 		# Not moving and not click-move: stop animation
 		if self.destination == null:
