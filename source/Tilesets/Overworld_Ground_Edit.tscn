@@ -39,12 +39,5 @@ region_enabled = true
 region_rect = Rect2( 48, 48, 48, 48 )
 _sections_unfolded = [ "Region", "Transform" ]
 
-[node name="Wood" type="Sprite" parent="." index="4"]
-
-position = Vector2( 240, 0 )
-texture = SubResource( 1 )
-region_enabled = true
-region_rect = Rect2( 0, 48, 48, 48 )
-_sections_unfolded = [ "Region", "Transform" ]
 
 
