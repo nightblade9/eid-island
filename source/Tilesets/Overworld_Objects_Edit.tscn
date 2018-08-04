@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/images/custom-tiles.png" type="Texture" id=1]
 
@@ -21,24 +21,30 @@ points = PoolVector2Array( -10, -10, 10, -10, 10, 24, -10, 24 )
 [sub_resource type="ConvexPolygonShape2D" id=4]
 
 custom_solver_bias = 0.0
-points = PoolVector2Array( -24, -24, 24, -24, 24, 6, -24, 6 )
+points = PoolVector2Array( -20, -20, 20, -20, 20, 20, -20, 20 )
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
 
 custom_solver_bias = 0.0
-points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
+points = PoolVector2Array( -24, -24, 24, -24, 24, 0, -24, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
 
 custom_solver_bias = 0.0
 points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 
-[node name="Node2D" type="Node2D" index="0"]
+[sub_resource type="ConvexPolygonShape2D" id=7]
+
+custom_solver_bias = 0.0
+points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
+
+[node name="Node2D" type="Node2D"]
 
 _sections_unfolded = [ "Z Index" ]
 
 [node name="Bush" type="Sprite" parent="." index="0"]
 
+editor/display_folded = true
 texture = SubResource( 1 )
 region_enabled = true
 region_rect = Rect2( 192, 96, 48, 48 )
@@ -81,7 +87,30 @@ bounce = 0.0
 
 shape = SubResource( 3 )
 
-[node name="House Door" type="Sprite" parent="." index="2"]
+[node name="Chest (Closed)" type="Sprite" parent="." index="2"]
+
+editor/display_folded = true
+position = Vector2( 120, 70 )
+texture = SubResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 192, 48, 48 )
+_sections_unfolded = [ "Region", "Transform", "Z Index" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Chest (Closed)" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chest (Closed)/StaticBody2D" index="0"]
+
+shape = SubResource( 4 )
+
+[node name="House Door" type="Sprite" parent="." index="3"]
 
 position = Vector2( 190, 0 )
 texture = SubResource( 1 )
@@ -101,10 +130,11 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="House Door/StaticBody2D" index="0"]
 
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
-[node name="House Roof" type="Sprite" parent="." index="3"]
+[node name="House Roof" type="Sprite" parent="." index="4"]
 
+editor/display_folded = true
 position = Vector2( 257, 0 )
 texture = SubResource( 1 )
 region_enabled = true
@@ -124,10 +154,11 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="House Roof/StaticBody2D" index="0"]
 
 visible = false
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
-[node name="House Bricks Outside (Blue)" type="Sprite" parent="." index="4"]
+[node name="House Bricks Outside (Blue)" type="Sprite" parent="." index="5"]
 
+editor/display_folded = true
 position = Vector2( 0, 72 )
 texture = SubResource( 1 )
 region_enabled = true
@@ -147,10 +178,11 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="House Bricks Outside (Blue)/StaticBody2D" index="0"]
 
 visible = false
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
-[node name="House Bricks Side (Blue)" type="Sprite" parent="." index="5"]
+[node name="House Bricks Side (Blue)" type="Sprite" parent="." index="6"]
 
+editor/display_folded = true
 position = Vector2( 60, 72 )
 texture = SubResource( 1 )
 region_enabled = true
@@ -170,10 +202,11 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="House Bricks Side (Blue)/StaticBody2D" index="0"]
 
 visible = false
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
-[node name="House Brick (Pink)" type="Sprite" parent="." index="6"]
+[node name="House Brick (Pink)" type="Sprite" parent="." index="7"]
 
+editor/display_folded = true
 position = Vector2( 120, 0 )
 texture = ExtResource( 1 )
 region_enabled = true
@@ -193,6 +226,6 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="House Brick (Pink)/StaticBody2D" index="0"]
 
 visible = false
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 
