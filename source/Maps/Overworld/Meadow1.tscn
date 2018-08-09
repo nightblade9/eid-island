@@ -58,7 +58,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 "shape_transform": Transform2D( 3.5, 0, 0, 3.5, -7.19999, -7.2 )
 } ]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
 
 [node name="Ground" type="TileMap" parent="." index="0"]
 
@@ -107,7 +107,7 @@ _sections_unfolded = [ "Cell", "Z Index" ]
 
 position = Vector2( 336, 336 )
 target_map = "Home"
-target_player_x = 480
-target_player_y = 444
+target_player_x = 456
+target_player_y = 420
 
 
