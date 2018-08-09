@@ -4,6 +4,7 @@ const OFFSET_TO_MATCH_TILE_TO_SCREEN = 36
 
 var current_map = null
 var _warps = []
+var _warps_to_remove = []
 
 var maps = {
 	# TODO: enum?
@@ -54,6 +55,16 @@ func show_map(map_name):
 
 # TODO: move this to an AutoWarp constructor/factory/etc
 func _setup_warps(current_map_name):
+	
+	for warp in self._warps:
+		# Can't .remove this inside a signal. Crashes on Android.
+		self._warps_to_remove.append(warp)
+		warp.queue_free()
+	
+	call_deferred("_remove_warps")
+	
+	_warps = []
+	
 	var map_coordinates = self.world_map.find(current_map_name)
 	
 	if map_coordinates != null: # map exists in the grid
@@ -73,13 +84,6 @@ func _setup_warps(current_map_name):
 		var map_size_tiles = map_size_metadata[0]
 		var tile_size_pixels = map_size_metadata[1]
 		var map_size_pixels = map_size_metadata[2]
-	
-		for warp in self._warps:
-			# Can't do this inside a signal. Crashes on Android.
-			# self.remove_child(warp)
-			warp.queue_free()
-		
-		_warps = []
 		
 		if warp_data.has("right"):
 			self._create_warp(warp_data["right"],
@@ -105,6 +109,7 @@ func _setup_warps(current_map_name):
 				map_size_tiles.x, 1,
 				# 2.5x because map size != screen size
 				null, map_size_pixels.y - (2 * tile_size_pixels.y))
+				
 
 func _create_warp(target_map, x, y, width_in_tiles, height_in_tiles, target_player_x, target_player_y):
 	var w = Warp.instance()
@@ -113,3 +118,10 @@ func _create_warp(target_map, x, y, width_in_tiles, height_in_tiles, target_play
 	w.setup(target_map, x, y, width_in_tiles, height_in_tiles, target_player_x, target_player_y)
 	self._warps.append(w)
 	self.add_child(w)
+
+func _remove_warps():
+	# Can't do this inside a signal. Crashes on Android.
+	print("Removed " + str(len(self._warps_to_remove)) + " warps")
+	for warp in self._warps_to_remove:
+		self.remove_child(warp)
+	self._warps_to_remove = []
