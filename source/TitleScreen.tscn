@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://TitleScreen.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/titlescreen.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/titlescreen.jpg" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/Hanalei-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/fonts/HanaleiFill-Regular.ttf" type="DynamicFontData" id=4]
 
