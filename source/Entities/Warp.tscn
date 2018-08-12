@@ -7,7 +7,7 @@
 custom_solver_bias = 0.0
 points = PoolVector2Array( 0, 0, 48, 0, 48, 48, 0, 48 )
 
-[node name="Area2D" type="Area2D"]
+[node name="Area2D" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -19,6 +19,8 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index" ]
 target_map = ""
+target_player_x = -1
+target_player_y = -1
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
 

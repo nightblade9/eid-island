@@ -1,11 +1,17 @@
 extends Area2D
 
 export var target_map = ""
-var target_player_x # nullable int
-var target_player_y # nullable int
+export var target_player_x = -1 # nullable int
+export var target_player_y = -1 # nullable int
+var is_auto_setup = false
 
 const TELEPORT_THRESHOLD_SECONDS = 0.1
 
+# By default, creates a 1x1 warp using external variables.
+func _init():
+	if not self.is_auto_setup:
+		self.setup(target_map, self.position.x, self.position.y, 1, 1, target_player_x, target_player_y)
+	
 func setup(target_map, x, y, tiles_wide, tiles_high, target_player_x, target_player_y):
 	self.target_map = target_map
 	self.position.x = x
