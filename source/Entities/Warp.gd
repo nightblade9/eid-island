@@ -5,7 +5,7 @@ export var target_player_x = -1 # nullable int
 export var target_player_y = -1 # nullable int
 var is_auto_setup = false
 
-const TELEPORT_THRESHOLD_SECONDS = 0.1
+const TELEPORT_THRESHOLD_SECONDS = 0.001
 
 # By default, creates a 1x1 warp using external variables.
 func _init():
