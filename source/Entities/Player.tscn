@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Entities/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/test.png" type="Texture" id=2]
+[ext_resource path="res://Components/MoveToMouseClick.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -116,5 +117,9 @@ playback_speed = 1.0
 "anims/Walk Right" = SubResource( 4 )
 "anims/Walk Up" = SubResource( 5 )
 blend_times = [  ]
+
+[node name="MoveToMouseClick" type="Node2D" parent="." index="3"]
+
+script = ExtResource( 3 )
 
 
