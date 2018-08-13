@@ -108,7 +108,7 @@ func _setup_warps(current_map_name):
 				0, 0,
 				map_size_tiles.x, 1,
 				# 2.5x because map size != screen size
-				null, map_size_pixels.y - (2 * tile_size_pixels.y))
+				null, map_size_pixels.y - (2.5 * tile_size_pixels.y))
 				
 
 func _create_warp(target_map, x, y, width_in_tiles, height_in_tiles, target_player_x, target_player_y):

@@ -5,8 +5,6 @@ export var target_player_x = -1 # nullable int
 export var target_player_y = -1 # nullable int
 var is_auto_setup = false
 
-const TELEPORT_THRESHOLD_SECONDS = 0.001
-
 # By default, creates a 1x1 warp using external variables.
 func _init():
 	if not self.is_auto_setup:
@@ -28,20 +26,6 @@ func _on_Area2D_body_entered(body):
 	if body != player:
 		return
 		
-	# When you have three maps in a column, and you're on the top map and move
-	# down one map, you immediately warp again to the bottom map. Same for any
-	# scenario where we have multiple maps in succession. It's not related to
-	# the player position, setting that to -999 or the middle of the scren does
-	# not change anything.
-	#
-	# It's not affected by removing/destroying previous warps, either.
-	#
-	# It COULD be because we're scaling our Area2D ...
-	#
-	# I can't figure it out. Instead, just prevent teleporting twice in 0.1s.
-	if OS.get_unix_time() - player.last_teleport_time < TELEPORT_THRESHOLD_SECONDS:
-		return
-		
 	get_tree().get_root().get_node("MainMap").show_map(self.target_map)
 	
 	if self.target_player_x != null:
@@ -50,4 +34,3 @@ func _on_Area2D_body_entered(body):
 		player.position.y = target_player_y
 
 	SignalManager.emit_signal("map_changed")
-

@@ -47,7 +47,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 custom_solver_bias = 0.0
 points = PoolVector2Array( 0, 0, 1000, 0, 1000, 650, 0, 650 )
 
-[node name="Node2D" type="Node2D" index="0"]
+[node name="Node2D" type="Node2D"]
 
 script = ExtResource( 1 )
 
