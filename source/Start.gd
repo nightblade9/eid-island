@@ -33,6 +33,7 @@ const STARTING_MAP = "Meadow1"
 
 func _ready():
 	self.show_map(STARTING_MAP)
+	
 	# TODO: center player
 	var game_dimensions = Vector2(ProjectSettings.get_setting("display/window/size/width"), ProjectSettings.get_setting("display/window/size/height"))
 	var player = get_node("Player")
