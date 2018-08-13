@@ -121,7 +121,6 @@ func _create_warp(target_map, x, y, width_in_tiles, height_in_tiles, target_play
 
 func _remove_warps():
 	# Can't do this inside a signal. Crashes on Android.
-	print("Removed " + str(len(self._warps_to_remove)) + " warps")
 	for warp in self._warps_to_remove:
 		self.remove_child(warp)
 	self._warps_to_remove = []

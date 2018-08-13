@@ -27,7 +27,7 @@ func _physics_process(delta):
 func _input(event):
 	# Click to move on PC, touch to move on Android
 	# Touch/drag to move on Android
-	if event is InputEventMouseButton or (OS.has_feature("Android") and event is InputEventMouseMotion):
+	if (event is InputEventMouseButton and event.pressed) or (OS.has_feature("Android") and event is InputEventMouseMotion):
 		self.destination = get_global_mouse_position()
 	
 		var new_facing = self.facing

@@ -16,5 +16,5 @@ func _ready():
 
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton or (OS.has_feature("Android") and event is InputEventMouseMotion):
+	if (event is InputEventMouseButton and event.pressed) or (OS.has_feature("Android") and event is InputEventMouseMotion):
 		get_tree().change_scene('res://Start.tscn')
