@@ -34,11 +34,8 @@ const STARTING_MAP = "Meadow1"
 func _ready():
 	self.show_map(STARTING_MAP)
 	
-	# TODO: center player
 	var game_dimensions = Vector2(ProjectSettings.get_setting("display/window/size/width"), ProjectSettings.get_setting("display/window/size/height"))
 	var player = get_node("Player")
-#	player.position.x = game_dimensions.x / 2
-#	player.position.y = game_dimensions.y / 2
 	player.position.x = 0
 	player.position.y = 0
 	
@@ -48,8 +45,6 @@ func show_map(map_name):
 		
 	self.current_map = load(maps[map_name]).instance()
 	self.current_map.z_index = -1 # draw under the player
-	# TODO: set the "Ground" layer only to z-index -1
-	# If there is none, set the first tileset z-index to -1
 	self.add_child(self.current_map)
 	
 	self._setup_warps(map_name)

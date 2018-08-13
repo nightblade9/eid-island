@@ -1,6 +1,5 @@
 extends Node
 
-# TODO: add signals here
 signal map_changed
 
 func _ready():
