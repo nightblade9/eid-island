@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Entities/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/test.png" type="Texture" id=2]
 [ext_resource path="res://Components/MoveToMouseClick.gd" type="Script" id=3]
+[ext_resource path="res://Components/MoveToKeyboard.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -122,8 +123,18 @@ blend_times = [  ]
 
 script = ExtResource( 3 )
 
-[connection signal="facing_new_direction" from="MoveToMouseClick" to="." method="_on_MoveToMouseClick_facing_new_direction"]
+[node name="MoveToKeyboard" type="Node2D" parent="." index="4"]
 
-[connection signal="reached_destination" from="MoveToMouseClick" to="." method="_on_MoveToMouseClick_reached_destination"]
+script = ExtResource( 4 )
+
+[connection signal="facing_new_direction" from="MoveToMouseClick" to="." method="_on_facing_new_direction"]
+
+[connection signal="reached_destination" from="MoveToMouseClick" to="." method="_on_reached_destination"]
+
+[connection signal="cancel_destination" from="MoveToKeyboard" to="." method="_on_MoveToKeyboard_cancel_destination"]
+
+[connection signal="facing_new_direction" from="MoveToKeyboard" to="." method="_on_facing_new_direction"]
+
+[connection signal="reached_destination" from="MoveToKeyboard" to="." method="_on_reached_destination"]
 
 

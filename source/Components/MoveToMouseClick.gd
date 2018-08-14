@@ -45,7 +45,7 @@ func _input(event):
 		# Even if you didn't change directions, restart animation.
 		# You may have moved down, then reached, now move down again
 		self.get_parent().facing = new_facing
-		emit_signal("facing_new_direction")
+		self.emit_signal("facing_new_direction")
 		
 func _move_parent_to_clicked_destintion():
 	var destination = self.get_parent().destination
@@ -57,6 +57,5 @@ func _move_parent_to_clicked_destintion():
 		# rotation = velocity.angle() # rotate towards target
 		if (destination - position).length() > MINIMUM_MOVE_DISTANCE:
 			self.get_parent().move_and_slide(velocity)
-		else:
-			self.get_parent().destination = null
+		else:			
 			self.emit_signal("reached_destination")
