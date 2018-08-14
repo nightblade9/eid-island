@@ -122,4 +122,8 @@ blend_times = [  ]
 
 script = ExtResource( 3 )
 
+[connection signal="facing_new_direction" from="MoveToMouseClick" to="." method="_on_MoveToMouseClick_facing_new_direction"]
+
+[connection signal="reached_destination" from="MoveToMouseClick" to="." method="_on_MoveToMouseClick_reached_destination"]
+
 

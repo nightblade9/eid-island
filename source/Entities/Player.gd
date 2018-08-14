@@ -44,7 +44,9 @@ func _move_to_keyboard():
 		velocity.y = 1
 		new_facing = "Down"
 	
-	self._change_animation(new_facing)
+	if new_facing != self.facing:
+		self.facing = new_facing
+		self._change_animation()
 	
 	if velocity.x != 0 or velocity.y != 0:
 		velocity = velocity.normalized() * speed
@@ -55,11 +57,15 @@ func _move_to_keyboard():
 		if self.destination == null:
 			$AnimationPlayer.stop()
 			
-func _change_animation(new_facing):
-	if new_facing != self.facing:
-		self.facing = new_facing
-		$AnimationPlayer.play("Walk " + self.facing)
+func _change_animation():
+	$AnimationPlayer.play("Walk " + self.facing)
 
 func _on_map_change():
 	self.destination = null
 	self.facing = "" # fixes bug: after warping, clicking didn't animate
+
+func _on_MoveToMouseClick_facing_new_direction():
+	self._change_animation()
+
+func _on_MoveToMouseClick_reached_destination():
+	$AnimationPlayer.stop()
