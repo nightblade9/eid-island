@@ -84,26 +84,26 @@ func _setup_warps(current_map_name):
 		
 		if warp_data.has("right"):
 			self._create_warp(warp_data["right"],
-				map_size_pixels.x - tile_size_pixels.x, 0,
-				1, map_size_tiles.y,
+				map_size_pixels.x - tile_size_pixels.x, tile_size_pixels.y,
+				1, map_size_tiles.y - 2,
 				2 * tile_size_pixels.x, null)
 		
 		if warp_data.has("left"):
 			self._create_warp(warp_data["left"],
-				0, 0,
-				1, map_size_tiles.y,
+				0, tile_size_pixels.y,
+				1, map_size_tiles.y - 2,
 				map_size_pixels.x - (2 * tile_size_pixels.x), null)
 			
 		if warp_data.has("down"):
 			self._create_warp(warp_data["down"],
-				0, map_size_pixels.y - tile_size_pixels.y - OFFSET_TO_MATCH_TILE_TO_SCREEN,
-				map_size_tiles.x, 1,
+				tile_size_pixels.x, map_size_pixels.y - tile_size_pixels.y - OFFSET_TO_MATCH_TILE_TO_SCREEN,
+				map_size_tiles.x - 2, 1,
 				null, 2 * tile_size_pixels.y)
 		
 		if warp_data.has("up"):
 			self._create_warp(warp_data["up"],
-				0, 0,
-				map_size_tiles.x, 1,
+				tile_size_pixels.x, 0,
+				map_size_tiles.x - 2, 1,
 				# 2.5x because map size != screen size
 				null, map_size_pixels.y - (2.5 * tile_size_pixels.y))
 				
