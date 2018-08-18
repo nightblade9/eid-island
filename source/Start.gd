@@ -22,7 +22,8 @@ var Warp = preload("res://Entities/Warp.tscn")
 # TODO: ENUM?
 var world_map = TwoDimensionalArray.new(0, 0).load_from([
 	["Meadow1", "Meadow2"],
-	["Meadow3", "Meadow4"]
+	["Meadow3", "Meadow4"],
+	["Meadow1"]
 ])
 
 const STARTING_MAP = "Meadow1"
@@ -111,12 +112,17 @@ func _create_warp(target_map, x, y, width_in_tiles, height_in_tiles, target_play
 	var w = Warp.instance()
 	w.is_auto_setup = true
 	
-	w.setup(target_map, x, y, width_in_tiles, height_in_tiles, target_player_x, target_player_y)
+	#w.setup(target_map, x, y, width_in_tiles, height_in_tiles, target_player_x, target_player_y)
+	w.setup(target_map, x, y, width_in_tiles, height_in_tiles, 200, 200)	
 	self._warps.append(w)
 	self.add_child(w)
 
+	print("Created warp " + str(w.id))
+
 func _remove_warps():
 	# Can't do this inside a signal. Crashes on Android.
+	print("Removing " + str(len(self._warps_to_remove)) + " warps:")
 	for warp in self._warps_to_remove:
 		self.remove_child(warp)
+		print("    Removed warp #" + str(warp.id))
 	self._warps_to_remove = []

@@ -4,7 +4,7 @@ extends KinematicBody2D
 # Godot 3.1. There's a merged PR for 3.1 that fixes a bug where
 # you can't use Animation if you're using Region.
 
-var speed = 200
+var speed = 400
 var destination = null # from mouse component
 var facing = null # "Left", "Up", etc.
 

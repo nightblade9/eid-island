@@ -21,6 +21,7 @@ _sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform"
 target_map = ""
 target_player_x = -1
 target_player_y = -1
+id = 0
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
 
