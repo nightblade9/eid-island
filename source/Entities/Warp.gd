@@ -3,6 +3,7 @@ extends Area2D
 export var target_map = ""
 export var target_player_x = -1 # nullable int
 export var target_player_y = -1 # nullable int
+
 var is_auto_setup = false
 
 # By default, creates a 1x1 warp using external variables.
@@ -41,10 +42,16 @@ func _on_Area2D_body_entered(body):
 	# Instead, trigger this code only if the bodies *actually* overlap.
 	#
 	# Assume player is one-tile sized.
-	
-	var warp_position = Rect2(self.position.x, self.position.y, self.scale.x * Globals.TILE_WIDTH, self.scale.y * Globals.TILE_HEIGHT)
+	#
+	var warp_position = Rect2(self.position.x, self.position.y,
+			self.scale.x * Globals.TILE_WIDTH,
+			self.scale.y * Globals.TILE_HEIGHT)
+		
 	var player_position = Rect2(body.position.x, body.position.y, Globals.TILE_WIDTH, Globals.TILE_HEIGHT);
 	
+	print("warp=" + str(warp_position) + ", player=" + str(player_position))
+	
+	print(str(warp_position.clip(player_position)))
 	if not warp_position.intersects(player_position):
 		return
 	

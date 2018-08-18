@@ -4,7 +4,7 @@
 [ext_resource path="res://Tilesets/Objects.tres" type="TileSet" id=2]
 [ext_resource path="res://Entities/Warp.tscn" type="PackedScene" id=3]
 
-[node name="Node2D" type="Node2D" index="0"]
+[node name="Node2D" type="Node2D"]
 
 [node name="Ground" type="TileMap" parent="." index="0"]
 
@@ -52,7 +52,7 @@ _sections_unfolded = [ "Cell", "Z Index" ]
 
 position = Vector2( 432, 480 )
 target_map = "Meadow1"
-target_player_x = 360
-target_player_y = 432
+target_player_x = 346
+target_player_y = 416
 
 

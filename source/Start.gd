@@ -109,8 +109,7 @@ func _create_warp(target_map, x, y, width_in_tiles, height_in_tiles, target_play
 	var w = Warp.instance()
 	w.is_auto_setup = true
 	
-	#w.setup(target_map, x, y, width_in_tiles, height_in_tiles, target_player_x, target_player_y)
-	w.setup(target_map, x, y, width_in_tiles, height_in_tiles, 200, 200)	
+	w.setup(target_map, x, y, width_in_tiles, height_in_tiles, target_player_x, target_player_y)
 	self._warps.append(w)
 	self.add_child(w)
 
