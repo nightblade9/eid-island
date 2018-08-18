@@ -1,7 +1,5 @@
 extends Node2D
 
-const OFFSET_TO_MATCH_TILE_TO_SCREEN = 36
-
 var current_map = null
 var _warps = []
 var _warps_to_remove = []
@@ -96,7 +94,7 @@ func _setup_warps(current_map_name):
 			
 		if warp_data.has("down"):
 			self._create_warp(warp_data["down"],
-				tile_size_pixels.x, map_size_pixels.y - tile_size_pixels.y - OFFSET_TO_MATCH_TILE_TO_SCREEN,
+				tile_size_pixels.x, map_size_pixels.y - tile_size_pixels.y,
 				map_size_tiles.x - 2, 1,
 				null, 2 * tile_size_pixels.y)
 		

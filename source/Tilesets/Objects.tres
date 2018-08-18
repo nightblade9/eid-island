@@ -7,7 +7,7 @@
 custom_solver_bias = 0.0
 points = PoolVector2Array( -24, 0, 24, 0, 12, 12, -12, 12 )
 
-[sub_resource type="StreamTexture" id=7]
+[sub_resource type="StreamTexture" id=2]
 
 flags = 4
 load_path = "res://.import/basictiles.png-4a1ce730567243450e79eec7ba5a671c.stex"
@@ -36,7 +36,7 @@ points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 [resource]
 
 0/name = "Bush"
-0/texture = SubResource( 7 )
+0/texture = SubResource( 2 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 192, 96, 48, 48 )
@@ -50,7 +50,7 @@ points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 24, 24 )
 } ]
 1/name = "Tree"
-1/texture = SubResource( 7 )
+1/texture = SubResource( 2 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 288, 192, 48, 48 )
@@ -64,7 +64,7 @@ points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 24, 24 )
 } ]
 2/name = "Chest (Closed)"
-2/texture = SubResource( 7 )
+2/texture = SubResource( 2 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 192, 192, 48, 48 )
@@ -78,7 +78,7 @@ points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 24, 24 )
 } ]
 3/name = "House Door"
-3/texture = SubResource( 7 )
+3/texture = SubResource( 2 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 0, 288, 48, 48 )
@@ -87,7 +87,7 @@ points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 3/navigation_offset = Vector2( 24, 24 )
 3/shapes = [  ]
 4/name = "House Roof"
-4/texture = SubResource( 7 )
+4/texture = SubResource( 2 )
 4/tex_offset = Vector2( 0, 0 )
 4/modulate = Color( 1, 1, 1, 1 )
 4/region = Rect2( 144, 0, 48, 48 )
@@ -101,7 +101,7 @@ points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 24, 24 )
 } ]
 5/name = "House Bricks Outside (Blue)"
-5/texture = SubResource( 7 )
+5/texture = SubResource( 2 )
 5/tex_offset = Vector2( 0, 0 )
 5/modulate = Color( 1, 1, 1, 1 )
 5/region = Rect2( 0, 0, 48, 48 )
@@ -115,7 +115,7 @@ points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 24, 24 )
 } ]
 6/name = "House Bricks Side (Blue)"
-6/texture = SubResource( 7 )
+6/texture = SubResource( 2 )
 6/tex_offset = Vector2( 0, 0 )
 6/modulate = Color( 1, 1, 1, 1 )
 6/region = Rect2( 48, 0, 48, 48 )
