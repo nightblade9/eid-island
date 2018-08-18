@@ -31,7 +31,6 @@ static func get_map_size_in_pixels(current_map):
 	var map_size_in_pixels = Vector2(map_size_tiles.x * tile_size.x, map_size_tiles.y * tile_size.y)
 	
 	var to_return = [map_size_tiles, tile_size, map_size_in_pixels]
-	print("map size in tiles="+str(map_size_tiles) + ", px=" + str(map_size_in_pixels))
 	return to_return
 
 #func _process(delta):

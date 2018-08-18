@@ -4,13 +4,9 @@ export var target_map = ""
 export var target_player_x = -1 # nullable int
 export var target_player_y = -1 # nullable int
 var is_auto_setup = false
-export var id = 0
 
 # By default, creates a 1x1 warp using external variables.
 func _init():
-	self.id = Globals.NEXT_WARP_ID
-	Globals.NEXT_WARP_ID += 1
-	
 	# If it's not auto-setup, it's already manually positioned/sized on the map
 	# We don't need to size it, set the target, etc.
 	if not self.is_auto_setup:
@@ -25,8 +21,6 @@ func setup(target_map, x, y, tiles_wide, tiles_high, target_player_x, target_pla
 	self._resize(tiles_wide, tiles_high)
 
 func _resize(tiles_wide, tiles_high):
-	# Scaling is simple but does it butcher collision detection? Probably.
-	# Resizing dynamically doesn't work -- no APIs to set ColorRect size.
 	self.scale.x = tiles_wide
 	self.scale.y = tiles_high
 
@@ -37,7 +31,22 @@ func _on_Area2D_body_entered(body):
 	if body != player:
 		return
 	
-	print("*** Triggered warp #" + str(self.id) + "; warp is at " + str(self.position) + ", body is at " + str(body.position))
+	# This method is called even when bodies don't overlap. If you have three
+	# maps in a row (vertically or horizontally), and traverse for the first map,
+	# this triggers immediately on the second map -- even when the player is
+	# teleported to (200, 200) and the warp is at (48, 480) and wide, not tall.
+	# It doesn't make sense. 
+	#
+	# Introducing a timing delay until the next time you can warp, adds other issues.
+	# Instead, trigger this code only if the bodies *actually* overlap.
+	#
+	# Assume player is one-tile sized.
+	
+	var warp_position = Rect2(self.position.x, self.position.y, self.scale.x * Globals.TILE_WIDTH, self.scale.y * Globals.TILE_HEIGHT)
+	var player_position = Rect2(body.position.x, body.position.y, Globals.TILE_WIDTH, Globals.TILE_HEIGHT);
+	
+	if not warp_position.intersects(player_position):
+		return
 	
 	get_tree().get_root().get_node("MainMap").show_map(self.target_map)
 	
@@ -46,5 +55,4 @@ func _on_Area2D_body_entered(body):
 	if self.target_player_y != null:
 		player.position.y = target_player_y
 
-	print("*** Warped with warp #" + str(self.id))
 	SignalManager.emit_signal("map_changed")
