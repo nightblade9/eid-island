@@ -6,6 +6,11 @@ var player
 const TILE_WIDTH = 48
 const TILE_HEIGHT = 48
 
+# Returns integer value from min to max inclusive
+# Source: https://godotengine.org/qa/2539/how-would-i-go-about-picking-a-random-number
+func randint(minimum, maximum):
+	return range(minimum, maximum + 1)[randi() % range(minimum, maximum + 1).size()]
+
 ###### SOURCE: https://godot.readthedocs.io/en/3.0/tutorials/3d/fps_tutorial/part_six.html#doc-fps-tutorial-part-six
 # ------------------------------------
 # All of the audio files.

@@ -41,7 +41,9 @@ func _on_reached_destination():
 	$AnimationPlayer.stop()
 
 func _on_cut_tree():
-	self.wood_collected += 1
+	# Trees give 3-4 wood on cut. TODO: move into tree class, emit
+	# signal with parameters (it's not possible in Godot yet)
+	self.wood_collected += Globals.randint(3, 4)
 	print("Player has " + str(self.wood_collected) + " wood")
 
 func _on_MoveToKeyboard_cancel_destination():
