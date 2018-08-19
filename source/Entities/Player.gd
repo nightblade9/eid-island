@@ -9,6 +9,7 @@ var destination = null # from mouse component
 var facing = null # "Left", "Up", etc.
 # TODO: convert into proper inventory (list of items)
 var wood_collected = 0
+var coins = 0
 
 func _init():
 	Globals.player = self

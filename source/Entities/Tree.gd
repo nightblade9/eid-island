@@ -8,7 +8,6 @@ var CUT_RANGE = Globals.TILE_WIDTH * 2
 var health = 3
 
 func _ready():
-	print("Tree ready")
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	set_process_input(true)

@@ -18,7 +18,8 @@ func randint(minimum, maximum):
 # You will need to provide your own sound files.
 var audio_clips = {
     "tree_hit": preload("res://assets/audio/tree_hit.wav"),
-    "tree_break": preload("res://assets/audio/tree_breaks.wav")
+    "tree_break": preload("res://assets/audio/tree_breaks.wav"),
+    "sell_item": preload("res://assets/audio/sell_item.wav")
 }
 
 const SIMPLE_AUDIO_PLAYER_SCENE = preload("res://Utilities/SimpleAudioPlayer.tscn")

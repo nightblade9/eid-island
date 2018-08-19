@@ -49,9 +49,6 @@ func _on_Area2D_body_entered(body):
 		
 	var player_position = Rect2(body.position.x, body.position.y, Globals.TILE_WIDTH, Globals.TILE_HEIGHT);
 	
-	print("warp=" + str(warp_position) + ", player=" + str(player_position))
-	
-	print(str(warp_position.clip(player_position)))
 	if not warp_position.intersects(player_position):
 		return
 	
