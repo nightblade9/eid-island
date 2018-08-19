@@ -29,7 +29,6 @@ func _input(event):
 		var my_bounds = Rect2(self.position.x, self.position.y, tree_size.size.x, tree_size.size.y)
 		
 		var test = my_bounds.has_point(clicked_on)
-		print("Test=" + str(test))
 		
 		if my_bounds.has_point(clicked_on):
 			
@@ -39,8 +38,12 @@ func _input(event):
 				pow(self.position.x - player.position.x, 2) + 
 				pow(self.position.y - player.position.y, 2)) < Globals.TILE_WIDTH:
 					self.health -= 1
-					print("Tree heatlh decreased to " + str(self.health))
-
+					if self.health <= 0:
+						Globals.play_sound("tree_break")
+						self.queue_free()
+						self.get_parent().remove_child(self)
+					else:
+						Globals.play_sound("tree_hit")
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	# Click to move on PC, touch to move on Android
