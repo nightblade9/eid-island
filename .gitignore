@@ -4,5 +4,8 @@
 export.cfg
 export_presets.cfg
 
+# Not required but keeps source-tree nicer.
+**/*.import
+
 # Mono-specific ignores
 .mono/
