@@ -3,7 +3,7 @@
 [ext_resource path="res://Tilesets/Ground.tres" type="TileSet" id=1]
 [ext_resource path="res://Tilesets/Objects.tres" type="TileSet" id=2]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
 
 [node name="Ground" type="TileMap" parent="." index="0"]
 
@@ -45,7 +45,7 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( 65539, 0, 0, 65547, 1, 0, 131082, 1, 0, 131084, 1, 0, 327692, 1, 0, 393218, 0, 0, 393221, 0, 0, 458754, 0, 0, 458766, 1, 0, 524288, 0, 0, 524301, 1, 0, 524302, 1, 0 )
+tile_data = PoolIntArray( 65539, 0, 0, 393218, 0, 0, 393221, 0, 0, 458754, 0, 0, 524288, 0, 0 )
 _sections_unfolded = [ "Cell", "Z Index" ]
 
 
