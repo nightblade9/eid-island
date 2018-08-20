@@ -43,6 +43,23 @@ func show_map(map_name):
 		
 	self.current_map = load(maps[map_name]).instance()
 	self.current_map.z_index = -1 # draw under the player
+	
+	
+	######## experiments
+	var children = self.current_map.get_children()
+	for tile_map in children:
+		if tile_map is TileMap:
+			var tile_set = tile_map.tile_set
+			for tileset_tile_id in tile_set.get_tiles_ids():
+				print("tile " + str(tileset_tile_id) + " => " + tile_set.tile_get_name(tileset_tile_id))				
+				
+			var tiles = tile_map.get_used_cells()
+			for vector in tiles:
+				var cell = tile_map.get_cellv(vector)
+				print("Cell is " + str(cell))
+				pass
+	######## end experiments
+	
 	self.add_child(self.current_map)
 	
 	self._setup_warps(map_name)
