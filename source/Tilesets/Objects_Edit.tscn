@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/images/custom-tiles.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/basictiles.png" type="Texture" id=2]
 
 [sub_resource type="StreamTexture" id=1]
 
@@ -13,15 +14,20 @@ _sections_unfolded = [ "Resource" ]
 custom_solver_bias = 0.0
 points = PoolVector2Array( -24, 0, 24, 0, 12, 12, -12, 12 )
 
-[sub_resource type="ConvexPolygonShape2D" id=4]
+[sub_resource type="ConvexPolygonShape2D" id=3]
 
 custom_solver_bias = 0.0
 points = PoolVector2Array( -20, -20, 20, -20, 20, 20, -20, 20 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+
+custom_solver_bias = 0.0
+points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
 
@@ -31,7 +37,7 @@ points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 [sub_resource type="ConvexPolygonShape2D" id=7]
 
 custom_solver_bias = 0.0
-points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
+points = PoolVector2Array( -8, -8, 8, -8, 8, 22, -8, 22 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -61,8 +67,7 @@ shape = SubResource( 2 )
 
 [node name="Chest (Closed)" type="Sprite" parent="." index="1"]
 
-editor/display_folded = true
-position = Vector2( 120, 70 )
+position = Vector2( 180, 70 )
 texture = SubResource( 1 )
 region_enabled = true
 region_rect = Rect2( 192, 192, 48, 48 )
@@ -80,11 +85,11 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chest (Closed)/StaticBody2D" index="0"]
 
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="Bed" type="Sprite" parent="." index="2"]
 
-position = Vector2( 190, 70 )
+position = Vector2( 250, 70 )
 texture = SubResource( 1 )
 region_enabled = true
 region_rect = Rect2( 240, 264, 48, 72 )
@@ -92,8 +97,7 @@ _sections_unfolded = [ "Region", "Transform", "Z Index" ]
 
 [node name="House Door" type="Sprite" parent="." index="3"]
 
-editor/display_folded = true
-position = Vector2( 190, 0 )
+position = Vector2( 180, 0 )
 texture = SubResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 288, 48, 48 )
@@ -111,13 +115,12 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="House Door/StaticBody2D" index="0"]
 
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 disabled = true
 
 [node name="House Roof" type="Sprite" parent="." index="4"]
 
-editor/display_folded = true
-position = Vector2( 257, 0 )
+position = Vector2( 247, 0 )
 texture = SubResource( 1 )
 region_enabled = true
 region_rect = Rect2( 144, 0, 48, 48 )
@@ -136,7 +139,7 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="House Roof/StaticBody2D" index="0"]
 
 visible = false
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="House Bricks Outside (Blue)" type="Sprite" parent="." index="5"]
 
@@ -160,7 +163,7 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="House Bricks Outside (Blue)/StaticBody2D" index="0"]
 
 visible = false
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="House Bricks Side (Blue)" type="Sprite" parent="." index="6"]
 
@@ -184,12 +187,11 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="House Bricks Side (Blue)/StaticBody2D" index="0"]
 
 visible = false
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="House Brick (Pink)" type="Sprite" parent="." index="7"]
 
-editor/display_folded = true
-position = Vector2( 120, 0 )
+position = Vector2( 120, 70 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 48, 48 )
@@ -206,6 +208,50 @@ friction = 1.0
 bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="House Brick (Pink)/StaticBody2D" index="0"]
+
+shape = SubResource( 6 )
+
+[node name="Tree" type="Sprite" parent="." index="8"]
+
+position = Vector2( 60, 0 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 288, 192, 48, 48 )
+_sections_unfolded = [ "Region", "Transform", "Z Index" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tree" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/StaticBody2D" index="0"]
+
+shape = SubResource( 7 )
+
+[node name="PineTree" type="Sprite" parent="." index="9"]
+
+position = Vector2( 120, 0 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 288, 144, 48, 48 )
+_sections_unfolded = [ "Region", "Transform", "Z Index" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PineTree" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PineTree/StaticBody2D" index="0"]
 
 shape = SubResource( 7 )
 

@@ -13,6 +13,12 @@ var maps = {
 	"Home": "res://Maps/Indoors/Home.tscn"
 }
 
+# Dictionary of tile name (of the entity in the tileset) to entity scene
+# We could use names instead of IDs, but that requires more code to figure out names
+var entity_tiles = {
+	"Tree": preload("res://Entities/Tree.tscn")
+}
+
 var TwoDimensionalArray = preload("res://Scripts/TwoDimensionalArray.gd")
 var TileMapSizer = preload("res://Scripts/TileMapSizer.gd")
 var Warp = preload("res://Entities/Warp.tscn")
@@ -43,26 +49,27 @@ func show_map(map_name):
 		
 	self.current_map = load(maps[map_name]).instance()
 	self.current_map.z_index = -1 # draw under the player
-	
-	
-	######## experiments
-	var children = self.current_map.get_children()
-	for tile_map in children:
+	self._populate_entities()
+	self.add_child(self.current_map)
+	self._setup_warps(map_name)
+
+# Find entities on the map (eg. trees). Remove them and replace them with
+# real entities (scenes) so that we can have logic (attach scripts) to them.
+func _populate_entities():
+	var possible_tilemaps = self.current_map.get_children()
+	for tile_map in possible_tilemaps:
 		if tile_map is TileMap:
 			var tile_set = tile_map.tile_set
-			for tileset_tile_id in tile_set.get_tiles_ids():
-				print("tile " + str(tileset_tile_id) + " => " + tile_set.tile_get_name(tileset_tile_id))				
-				
-			var tiles = tile_map.get_used_cells()
-			for vector in tiles:
-				var cell = tile_map.get_cellv(vector)
-				print("Cell is " + str(cell))
-				pass
-	######## end experiments
-	
-	self.add_child(self.current_map)
-	
-	self._setup_warps(map_name)
+			for cell in tile_map.get_used_cells():
+				var tile_id = tile_map.get_cellv(cell)
+				var tile_name = tile_set.tile_get_name(tile_id)
+				if entity_tiles.has(tile_name):
+					print("replace " + tile_name)
+					var scene = entity_tiles[tile_name]
+					var instance = scene.instance()
+					self.current_map.add_child(instance)
+					instance.position.x = cell.x * Globals.TILE_WIDTH
+					instance.position.y = cell.y * Globals.TILE_HEIGHT
 
 # TODO: move this to an AutoWarp constructor/factory/etc
 func _setup_warps(current_map_name):

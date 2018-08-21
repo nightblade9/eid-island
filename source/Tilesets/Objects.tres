@@ -1,13 +1,14 @@
-[gd_resource type="TileSet" load_steps=8 format=2]
+[gd_resource type="TileSet" load_steps=10 format=2]
 
-[ext_resource path="res://assets/images/custom-tiles.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/basictiles.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/custom-tiles.png" type="Texture" id=2]
 
-[sub_resource type="ConvexPolygonShape2D" id=1]
+[sub_resource type="ConvexPolygonShape2D" id=2]
 
 custom_solver_bias = 0.0
 points = PoolVector2Array( -24, 0, 24, 0, 12, 12, -12, 12 )
 
-[sub_resource type="StreamTexture" id=2]
+[sub_resource type="StreamTexture" id=1]
 
 flags = 4
 load_path = "res://.import/basictiles.png-4a1ce730567243450e79eec7ba5a671c.stex"
@@ -18,10 +19,10 @@ _sections_unfolded = [ "Resource" ]
 custom_solver_bias = 0.0
 points = PoolVector2Array( -20, -20, 20, -20, 20, 20, -20, 20 )
 
-[sub_resource type="ConvexPolygonShape2D" id=4]
+[sub_resource type="ConvexPolygonShape2D" id=7]
 
 custom_solver_bias = 0.0
-points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
+points = PoolVector2Array( -8, -8, 8, -8, 8, 22, -8, 22 )
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
 
@@ -33,10 +34,15 @@ points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 custom_solver_bias = 0.0
 points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 
+[sub_resource type="ConvexPolygonShape2D" id=8]
+
+custom_solver_bias = 0.0
+points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
+
 [resource]
 
 0/name = "Bush"
-0/texture = SubResource( 2 )
+0/texture = SubResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 192, 96, 48, 48 )
@@ -46,11 +52,11 @@ points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 0/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 1 ),
+"shape": SubResource( 2 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 24, 24 )
 } ]
 1/name = "Chest (Closed)"
-1/texture = SubResource( 2 )
+1/texture = SubResource( 1 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 192, 192, 48, 48 )
@@ -64,7 +70,7 @@ points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 24, 24 )
 } ]
 2/name = "Bed"
-2/texture = SubResource( 2 )
+2/texture = SubResource( 1 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 240, 264, 48, 72 )
@@ -73,7 +79,7 @@ points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 2/navigation_offset = Vector2( 24, 36 )
 2/shapes = [  ]
 3/name = "House Door"
-3/texture = SubResource( 2 )
+3/texture = SubResource( 1 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 0, 288, 48, 48 )
@@ -82,7 +88,7 @@ points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 3/navigation_offset = Vector2( 24, 24 )
 3/shapes = [  ]
 4/name = "House Roof"
-4/texture = SubResource( 2 )
+4/texture = SubResource( 1 )
 4/tex_offset = Vector2( 0, 0 )
 4/modulate = Color( 1, 1, 1, 1 )
 4/region = Rect2( 144, 0, 48, 48 )
@@ -92,11 +98,11 @@ points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 4/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 4 ),
+"shape": SubResource( 5 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 24, 24 )
 } ]
 5/name = "House Bricks Outside (Blue)"
-5/texture = SubResource( 2 )
+5/texture = SubResource( 1 )
 5/tex_offset = Vector2( 0, 0 )
 5/modulate = Color( 1, 1, 1, 1 )
 5/region = Rect2( 0, 0, 48, 48 )
@@ -106,11 +112,11 @@ points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 5/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 4 ),
+"shape": SubResource( 5 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 24, 24 )
 } ]
 6/name = "House Bricks Side (Blue)"
-6/texture = SubResource( 2 )
+6/texture = SubResource( 1 )
 6/tex_offset = Vector2( 0, 0 )
 6/modulate = Color( 1, 1, 1, 1 )
 6/region = Rect2( 48, 0, 48, 48 )
@@ -120,11 +126,11 @@ points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 6/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 4 ),
+"shape": SubResource( 5 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 24, 24 )
 } ]
 7/name = "House Brick (Pink)"
-7/texture = ExtResource( 1 )
+7/texture = ExtResource( 2 )
 7/tex_offset = Vector2( 0, 0 )
 7/modulate = Color( 1, 1, 1, 1 )
 7/region = Rect2( 0, 0, 48, 48 )
@@ -134,11 +140,11 @@ points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 7/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 5 ),
+"shape": SubResource( 6 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 24, 24 )
 } ]
 8/name = "House Brick (Pink)"
-8/texture = ExtResource( 1 )
+8/texture = ExtResource( 2 )
 8/tex_offset = Vector2( 0, 0 )
 8/modulate = Color( 1, 1, 1, 1 )
 8/region = Rect2( 0, 0, 48, 48 )
@@ -148,7 +154,35 @@ points = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
 8/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 6 ),
+"shape": SubResource( 8 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 24, 24 )
+} ]
+9/name = "Tree"
+9/texture = ExtResource( 1 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 288, 192, 48, 48 )
+9/is_autotile = false
+9/occluder_offset = Vector2( 24, 24 )
+9/navigation_offset = Vector2( 24, 24 )
+9/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 7 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 24, 24 )
+} ]
+10/name = "PineTree"
+10/texture = ExtResource( 1 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 288, 144, 48, 48 )
+10/is_autotile = false
+10/occluder_offset = Vector2( 24, 24 )
+10/navigation_offset = Vector2( 24, 24 )
+10/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 7 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 24, 24 )
 } ]
 
