@@ -64,12 +64,14 @@ func _populate_entities():
 				var tile_id = tile_map.get_cellv(cell)
 				var tile_name = tile_set.tile_get_name(tile_id)
 				if entity_tiles.has(tile_name):
-					print("replace " + tile_name)
+					# Spawn + replace with entity of the same name
 					var scene = entity_tiles[tile_name]
 					var instance = scene.instance()
 					self.current_map.add_child(instance)
 					instance.position.x = cell.x * Globals.TILE_WIDTH
 					instance.position.y = cell.y * Globals.TILE_HEIGHT
+					# Remove tile
+					tile_map.set_cellv(cell, -1)
 
 # TODO: move this to an AutoWarp constructor/factory/etc
 func _setup_warps(current_map_name):
