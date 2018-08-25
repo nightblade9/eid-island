@@ -7,7 +7,9 @@ signal cancel_destination
 signal reached_destination
 signal facing_new_direction
 
-var last_facing
+export var speed = 0 # set by owning component
+
+var last_facing = ""
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -40,7 +42,7 @@ func _move_to_keyboard():
 		last_facing = new_facing
 	
 	if velocity.x != 0 or velocity.y != 0:
-		velocity = velocity.normalized() * self.get_parent().speed
+		velocity = velocity.normalized() * self.speed
 		self.get_parent().move_and_slide(velocity)
 		self.emit_signal("cancel_destination") # if clicked, cancel that destination
 	else:

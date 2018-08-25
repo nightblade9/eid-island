@@ -86,7 +86,7 @@ tracks/0/keys = {
 "values": [ 9, 10, 11, 10, 9 ]
 }
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -129,6 +129,7 @@ script = ExtResource( 3 )
 [node name="MoveToKeyboard" type="Node2D" parent="." index="4"]
 
 script = ExtResource( 4 )
+speed = 200
 
 [connection signal="facing_new_direction" from="MoveToMouseClick" to="." method="_on_facing_new_direction"]
 

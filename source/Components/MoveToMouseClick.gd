@@ -50,10 +50,9 @@ func _input(event):
 func _move_parent_to_clicked_destintion():
 	var destination = self.get_parent().destination
 	var position = self.get_parent().position
-	var speed = self.get_parent().speed
 	
 	if destination != null:
-		var velocity = (destination - position).normalized() * speed
+		var velocity = (destination - position).normalized() * self.speed
 		# rotation = velocity.angle() # rotate towards target
 		if (destination - position).length() > MINIMUM_MOVE_DISTANCE:
 			self.get_parent().move_and_slide(velocity)
