@@ -17,31 +17,34 @@ func randint(minimum, maximum):
 
 # You will need to provide your own sound files.
 var audio_clips = {
-    "tree_hit": preload("res://assets/audio/tree_hit.wav"),
-    "tree_break": preload("res://assets/audio/tree_breaks.wav"),
-    "sell_item": preload("res://assets/audio/sell_item.wav")
+	"tree_hit": preload("res://assets/audio/tree_hit.wav"),
+	"tree_break": preload("res://assets/audio/tree_breaks.wav"),
+	"sell_item": preload("res://assets/audio/sell_item.wav")
 }
 
-const SIMPLE_AUDIO_PLAYER_SCENE = preload("res://Utilities/SimpleAudioPlayer.tscn")
-var created_audio = []
+const AudioFilePlayerClass = preload("res://Utilities/AudioFilePlayer.tscn")
+var audio_instances = []
 
 # loop_sound is not used yet
 func play_sound(sound_name, loop_sound=false, sound_position=null):
-    if audio_clips.has(sound_name):
-        var new_audio = SIMPLE_AUDIO_PLAYER_SCENE.instance()
-
-        add_child(new_audio)
-        created_audio.append(new_audio)
-
-        new_audio.play_sound(audio_clips[sound_name], sound_position)
-
-    else:
-        print ("ERROR: cannot play sound that does not exist in audio_clips!")
+	if audio_clips.has(sound_name):
+		var audio_player = AudioFilePlayerClass.instance()
+		add_child(audio_player)
+		audio_instances.append(audio_player)
+		audio_player.play_sound(audio_clips[sound_name], sound_position)
+		audio_player.connect("sound_finished", self, "remove_sound")
+	else:
+		print ("ERROR: cannot play sound that does not exist in audio_clips!")
 # ------------------------------------
 
+func remove_sound(audio):
+	var index = audio_instances.find(audio)
+	audio_instances.remove(index)
+
+
 func clean_up_audio():
-	for sound in created_audio:
+	for sound in audio_instances:
 		if (sound != null):
-	        sound.queue_free()
+			sound.queue_free()
 		
-	created_audio.clear()
+	audio_instances.clear()
