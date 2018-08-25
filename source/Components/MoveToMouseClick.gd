@@ -11,7 +11,7 @@ signal reached_destination # stop moving please and thanks
 
 export var speed = 0
 
-var destination
+var destination = null # Vector2
 
 func _ready():
 	############ TODO: assigng self.animation to player animatino
@@ -31,7 +31,7 @@ func _input(event):
 	if (event is InputEventMouseButton and event.pressed) or (OS.has_feature("Android") and event is InputEventMouseMotion):
 		self.destination = get_global_mouse_position()
 	
-		var new_facing = self.get_parent().facing
+		var new_facing = ""
 		var direction = self.destination - self.get_parent().position
 		var magnitude = direction.abs()
 		
