@@ -9,6 +9,8 @@ const MINIMUM_MOVE_DISTANCE = 5
 signal facing_new_direction # we're facing a new direction as a result of clicking
 signal reached_destination # stop moving please and thanks
 
+export var speed = 0
+
 func _ready():
 	############ TODO: assigng self.animation to player animatino
 	
@@ -44,8 +46,7 @@ func _input(event):
 		
 		# Even if you didn't change directions, restart animation.
 		# You may have moved down, then reached, now move down again
-		self.get_parent().facing = new_facing
-		self.emit_signal("facing_new_direction")
+		self.emit_signal("facing_new_direction", new_facing)
 		
 func _move_parent_to_clicked_destintion():
 	var destination = self.get_parent().destination

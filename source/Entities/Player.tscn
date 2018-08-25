@@ -125,6 +125,7 @@ blend_times = [  ]
 [node name="MoveToMouseClick" type="Node2D" parent="." index="3"]
 
 script = ExtResource( 3 )
+speed = 200
 
 [node name="MoveToKeyboard" type="Node2D" parent="." index="4"]
 
