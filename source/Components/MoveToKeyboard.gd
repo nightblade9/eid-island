@@ -7,6 +7,8 @@ signal cancel_destination
 signal reached_destination
 signal facing_new_direction
 
+var last_facing
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
@@ -17,7 +19,7 @@ func _process(delta):
 
 func _move_to_keyboard():	
 	var velocity = Vector2(0, 0)
-	var new_facing = self.get_parent().facing
+	var new_facing = self.last_facing
 	
 	if Input.is_key_pressed(KEY_RIGHT):
 		velocity.x = 1
@@ -33,15 +35,16 @@ func _move_to_keyboard():
 		velocity.y = 1
 		new_facing = "Down"
 	
-	if new_facing != self.get_parent().facing:
-		self.get_parent().facing = new_facing
-		emit_signal("facing_new_direction")
+	if new_facing != self.last_facing:
+		emit_signal("facing_new_direction", new_facing)
+		last_facing = new_facing
 	
 	if velocity.x != 0 or velocity.y != 0:
 		velocity = velocity.normalized() * self.get_parent().speed
 		self.get_parent().move_and_slide(velocity)
 		self.emit_signal("cancel_destination") # if clicked, cancel that destination
 	else:
+		self.last_facing = null
 		# Not moving and not click-move: stop animation
 		if self.get_parent().destination == null:
 			self.emit_signal("reached_destination")

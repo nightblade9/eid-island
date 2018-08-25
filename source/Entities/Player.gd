@@ -4,7 +4,7 @@ extends KinematicBody2D
 # Godot 3.1. There's a merged PR for 3.1 that fixes a bug where
 # you can't use Animation if you're using Region.
 
-var speed = 400
+var speed = 200
 var destination = null # from mouse component
 var facing = null # "Left", "Up", etc.
 # TODO: convert into proper inventory (list of items)
@@ -34,7 +34,8 @@ func _on_map_change():
 	self.destination = null
 	self.facing = "" # fixes bug: after warping, clicking didn't animate
 
-func _on_facing_new_direction():
+func _on_facing_new_direction(new_direction):
+	self.facing = new_direction
 	self._change_animation()
 
 func _on_reached_destination():
