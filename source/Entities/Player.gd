@@ -4,8 +4,8 @@ extends KinematicBody2D
 # Godot 3.1. There's a merged PR for 3.1 that fixes a bug where
 # you can't use Animation if you're using Region.
 
-var destination = null # from mouse component
 var facing = null # "Left", "Up", etc.
+
 # TODO: convert into proper inventory (list of items)
 var wood_collected = 0
 var coins = 0
@@ -30,7 +30,7 @@ func _change_animation():
 	$AnimationPlayer.play("Walk " + self.facing)
 
 func _on_map_change():
-	self.destination = null
+	self._cancel_mouse_destination()
 	self.facing = "" # fixes bug: after warping, clicking didn't animate
 
 func _on_facing_new_direction(new_direction):
@@ -38,7 +38,7 @@ func _on_facing_new_direction(new_direction):
 	self._change_animation()
 
 func _on_reached_destination():
-	self.destination = null
+	self._cancel_mouse_destination()
 	$AnimationPlayer.stop()
 
 func _on_cut_tree():
@@ -48,4 +48,7 @@ func _on_cut_tree():
 	print("Player has " + str(self.wood_collected) + " wood")
 
 func _on_MoveToKeyboard_cancel_destination():
-	self.destination = null
+	self._cancel_mouse_destination()
+
+func _cancel_mouse_destination():
+	$MoveToMouseClick.cancel_destination()

@@ -11,6 +11,8 @@ signal reached_destination # stop moving please and thanks
 
 export var speed = 0
 
+var destination
+
 func _ready():
 	############ TODO: assigng self.animation to player animatino
 	
@@ -27,10 +29,10 @@ func _input(event):
 	# Click to move on PC, touch to move on Android
 	# Touch/drag to move on Android
 	if (event is InputEventMouseButton and event.pressed) or (OS.has_feature("Android") and event is InputEventMouseMotion):
-		self.get_parent().destination = get_global_mouse_position()
+		self.destination = get_global_mouse_position()
 	
 		var new_facing = self.get_parent().facing
-		var direction = self.get_parent().destination - self.get_parent().position
+		var direction = self.destination - self.get_parent().position
 		var magnitude = direction.abs()
 		
 		if magnitude.x > magnitude.y: # more horizontal than vertical
@@ -47,9 +49,12 @@ func _input(event):
 		# Even if you didn't change directions, restart animation.
 		# You may have moved down, then reached, now move down again
 		self.emit_signal("facing_new_direction", new_facing)
-		
+
+func cancel_destination():
+	self.destination = null
+
 func _move_parent_to_clicked_destintion():
-	var destination = self.get_parent().destination
+	var destination = self.destination
 	var position = self.get_parent().position
 	
 	if destination != null:
