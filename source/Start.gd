@@ -19,7 +19,7 @@ func _ready():
 	player.position.y = 0
 	
 func show_map(map_name):
-	Globals.clean_up_audio()
+	Globals.audio_manager.clean_up_audio()
 	
 	if self.current_map != null:
 		self.current_map.queue_free()

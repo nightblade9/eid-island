@@ -32,6 +32,7 @@ func _change_animation():
 func _on_map_change():
 	self._cancel_mouse_destination()
 	self.facing = "" # fixes bug: after warping, clicking didn't animate
+	$AnimationPlayer.stop()
 
 func _on_facing_new_direction(new_direction):
 	self.facing = new_direction

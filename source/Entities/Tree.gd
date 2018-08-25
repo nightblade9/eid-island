@@ -31,9 +31,9 @@ func _input(event):
 				pow(self.position.y - player.position.y, 2)) < CUT_RANGE:
 					self.health -= 1
 					if self.health <= 0:
-						Globals.play_sound("tree_break")
+						Globals.audio_manager.play_sound("tree_break")
 						self.queue_free()
 						self.get_parent().remove_child(self)
 						SignalManager.emit_signal("cut_tree")
 					else:
-						Globals.play_sound("tree_hit")
+						Globals.audio_manager.play_sound("tree_hit")

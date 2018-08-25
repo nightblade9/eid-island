@@ -1,7 +1,7 @@
 extends Node
 
 var audio_node = null
-var should_loop = false
+export var should_loop = false
 
 signal sound_finished # final finish, not "looping now" restart
 
