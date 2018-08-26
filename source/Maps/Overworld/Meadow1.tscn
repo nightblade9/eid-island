@@ -52,7 +52,7 @@ _sections_unfolded = [ "Cell", "Z Index" ]
 
 [node name="Door Warp" parent="." index="2" instance=ExtResource( 3 )]
 
-position = Vector2( 336, 288 )
+position = Vector2( 336, 252 )
 target_map = "Home"
 target_player_x = 432
 target_player_y = 420

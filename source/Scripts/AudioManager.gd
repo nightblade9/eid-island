@@ -8,7 +8,8 @@ extends Node
 var audio_clips = {
 	"tree_hit": preload("res://assets/audio/tree_hit.wav"),
 	"tree_break": preload("res://assets/audio/tree_breaks.wav"),
-	"sell_item": preload("res://assets/audio/sell_item.wav")
+	"sell_item": preload("res://assets/audio/sell_item.wav"),
+	"open_door": preload("res://assets/audio/open_door.wav")
 }
 
 const AudioFilePlayerClass = preload("res://Utilities/AudioFilePlayer.tscn")
