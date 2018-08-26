@@ -9,7 +9,8 @@ var Warp = preload("res://Entities/Warp.tscn")
 # Dictionary of tile name (of the entity in the tileset) to entity scene
 # We could use names instead of IDs, but that requires more code to figure out names
 const entity_tiles = {
-	"Tree": preload("res://Entities/Tree.tscn")
+	"Tree": preload("res://Entities/Tree.tscn"),
+	"House Door": preload("res://Entities/Door.tscn"),
 }
 
 var _warps = []
