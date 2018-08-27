@@ -32,8 +32,9 @@ func _input(event):
 					self.health -= 1
 					if self.health <= 0:
 						Globals.audio_manager.play_sound("tree_break")
+						# Trees give 3-4 wood on cut. TODO: move into tree class, emit
+						player.collect_wood(Globals.randint(3, 4))
 						self.queue_free()
 						self.get_parent().remove_child(self)
-						SignalManager.emit_signal("cut_tree")
 					else:
 						Globals.audio_manager.play_sound("tree_hit")

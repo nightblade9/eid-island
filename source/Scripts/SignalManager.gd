@@ -1,7 +1,8 @@
 extends Node
 
 signal map_changed
-signal cut_tree
+signal wood_changed
+signal coins_changed
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
