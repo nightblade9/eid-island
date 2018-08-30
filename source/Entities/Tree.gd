@@ -23,18 +23,23 @@ func _input(event):
 		var test = my_bounds.has_point(clicked_on)
 		
 		if my_bounds.has_point(clicked_on):
+			self._cut_if_player_in_range()
 			
-			var player = Globals.player
-			
-			if sqrt(
-				pow(self.position.x - player.position.x, 2) + 
-				pow(self.position.y - player.position.y, 2)) < CUT_RANGE:
-					self.health -= 1
-					if self.health <= 0:
-						Globals.audio_manager.play_sound("tree_break")
-						# Trees give 3-4 wood on cut. TODO: move into tree class, emit
-						player.collect_wood(Globals.randint(3, 4))
-						self.queue_free()
-						self.get_parent().remove_child(self)
-					else:
-						Globals.audio_manager.play_sound("tree_hit")
+	elif event is InputEventKey and event.pressed and event.scancode == KEY_SPACE:
+		self._cut_if_player_in_range()
+
+func _cut_if_player_in_range():
+	var player = Globals.player
+	
+	if sqrt(
+		pow(self.position.x - player.position.x, 2) + 
+		pow(self.position.y - player.position.y, 2)) < CUT_RANGE:
+			self.health -= 1
+			if self.health <= 0:
+				Globals.audio_manager.play_sound("tree_break")
+				# Trees give 3-4 wood on cut. TODO: move into tree class, emit
+				player.collect_wood(Globals.randint(3, 4))
+				self.queue_free()
+				self.get_parent().remove_child(self)
+			else:
+				Globals.audio_manager.play_sound("tree_hit")
