@@ -22,7 +22,7 @@ SignalManager="*res://Scripts/SignalManager.gd"
 [display]
 
 window/size/width=960
-window/size/height=528
+window/size/height=540
 window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"

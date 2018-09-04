@@ -1,5 +1,7 @@
 extends Node2D
 
+const OFFSET_TO_MATCH_TILE_TO_SCREEN = 36
+
 var current_map = null
 
 var MapCreator = preload("res://Scripts/MapCreator.gd")
