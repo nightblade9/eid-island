@@ -1,2 +1,3 @@
 # Mono-specific ignores
 .mono/
+**/export_presets.cfg
